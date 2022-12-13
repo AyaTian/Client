@@ -1,0 +1,17 @@
+My understanding that I have from reading the assignment:
+A single node is the same as a host which has 3 ways of interacting: delete, create, get.
+A list of nodes is a cluster.
+
+My understanding of creating a group on a cluster is the program needs to loop through the nodes of the cluster and create an object on each node through the create API.
+If any kind of error occurs during the creation an object on a node, all nodes on which the object was created succesfully need to be wiped of this object. 
+Once all nodes are wiped, the function returns a failed message to the user.
+If the node does not respond to the wiping of an object the program will repeatedly try to remove it untill successful. This assumes that within reasonable time the node will respond. 
+If the creation of an object on the first node fails, no nodes need to be wiped since no succesful creations were done and the function returns a failed message.
+Finally if the object created on each node is successful the user is informed with a success message.
+
+The deletion function works in the same way but in reverse. When an object is deleted from a node, the object has to be deleted from all nodes in the same cluster.
+If this fails, the program will reinstate the objects on all nodes from which it was deleted succesfully. 
+Here again the program will repeat the creation of an object if there is any kind of failure on reinstate. 
+Assuming in that case that within reasonable time the node will respond.
+If deletion of the first object fails, no creations need to be done in the roll back and an failure message will be displayed.
+If deletion on of the object on all nodes is successful the user receives a success message.
