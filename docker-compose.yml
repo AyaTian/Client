@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  assigment:
-    image: assigment
+  client:
+    image: client
     build:
       context: .
       dockerfile: ./Dockerfile
