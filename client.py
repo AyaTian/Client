@@ -75,7 +75,7 @@ class Client:
             try:
                 status_code = self.create_group_in_host(host)
 
-                # error happened in creating, then will roll back created group(s)
+                # if status code is not 201 which means error happened in creating, then will roll back created group(s),then will roll back created group(s),then will roll back created group(s)
                 if status_code != 201:
                     return self.rollback_created_group_in_hosts(index)
             except:
